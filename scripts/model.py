@@ -28,7 +28,7 @@ feature_cols = ["subscriber", "rating", "num_reviews", "num_comments", "num_lect
 assembler = VectorAssembler(inputCols=feature_cols, outputCol="features")
 course_df = assembler.transform(course_df)
 
-(training_data, testing_data) = course_df.randomSplit([0.8, 0.2], seed=2021)
+(training_data, testing_data) = course_df.randomSplit([0.7, 0.3], seed=2021)
 
 lr = LinearRegression(featuresCol="features", labelCol="price")
 
