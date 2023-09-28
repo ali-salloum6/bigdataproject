@@ -35,6 +35,7 @@ lr = LinearRegression(featuresCol="features", labelCol="price")
 param_grid_lr = ParamGridBuilder() \
     .addGrid(lr.maxIter, [5, 10, 20]) \
     .addGrid(lr.regParam, [1.0, 0.1, 0.01]) \
+    .addGrid(lr.fitIntercept, [False, True])\
     .build()
 
 crossval_lr = CrossValidator(estimator=lr, estimatorParamMaps=param_grid_lr, evaluator=RegressionEvaluator(labelCol="price", predictionCol="prediction", metricName="rmse"), numFolds=4)
