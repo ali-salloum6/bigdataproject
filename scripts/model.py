@@ -37,7 +37,7 @@ param_grid_lr = ParamGridBuilder() \
     .addGrid(lr.regParam, [1.0, 0.1, 0.01]) \
     .build()
 
-crossval_lr = CrossValidator(estimator=lr, estimatorParamMaps=param_grid_lr, evaluator=RegressionEvaluator(labelCol="price", predictionCol="prediction", metricName="rmse"), numFolds=3)
+crossval_lr = CrossValidator(estimator=lr, estimatorParamMaps=param_grid_lr, evaluator=RegressionEvaluator(labelCol="price", predictionCol="prediction", metricName="rmse"), numFolds=4)
 
 print("Start training of Linear Regression")
 cv_model_lr = crossval_lr.fit(training_data)
@@ -72,7 +72,7 @@ param_grid = ParamGridBuilder() \
     .addGrid(rf.numTrees, [5, 10, 20]) \
     .build()
 
-crossval = CrossValidator(estimator=rf, estimatorParamMaps=param_grid, evaluator=RegressionEvaluator(labelCol="price", predictionCol="prediction", metricName="rmse"), numFolds=3)
+crossval = CrossValidator(estimator=rf, estimatorParamMaps=param_grid, evaluator=RegressionEvaluator(labelCol="price", predictionCol="prediction", metricName="rmse"), numFolds=4)
 
 print("Start training of Random Forest")
 cv_model = crossval.fit(training_data)
